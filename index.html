@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Groundwork Consulting — HR consulting and advisory for agricultural, remote, and regional employers across Australia.">
+<meta property="og:title" content="Groundwork Consulting">
+<meta property="og:description" content="Practical HR built for the real world. Supporting agricultural, remote, and regional employers across Australia.">
+<meta property="og:type" content="website">
+<title>Groundwork Consulting | HR Advisory for Regional Australia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --clay: #C4835A; --clay-light: #E8C4A8; --clay-deep: #8B5E3C;
+  --earth: #3D2E1E; --earth-mid: #5C4A35;
+  --cream: #F5F0E8; --cream-dark: #E8E0D0; --warm-white: #FDFAF5;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--earth); color: var(--cream); overflow-x: hidden; cursor: none; }
+#cursor { width: 12px; height: 12px; background: var(--clay); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); mix-blend-mode: screen; }
+#cursor-ring { width: 36px; height: 36px; border: 1.5px solid var(--clay); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); opacity: 0.6; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 4rem; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s ease, padding 0.4s ease; }
+nav.scrolled { background: rgba(253,250,245,0.93); backdrop-filter: blur(12px); padding: 1rem 4rem; border-bottom: 1px solid rgba(196,131,90,0.15); }
+.nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--warm-white); letter-spacing: 0.02em; text-decoration: none; transition: color 0.4s; }
+nav.scrolled .nav-logo { color: var(--earth); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.8rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,250,245,0.85); text-decoration: none; transition: color 0.3s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--clay); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+.nav-links a:hover::after { transform: scaleX(1); }
+nav.scrolled .nav-links a { color: var(--earth-mid); }
+.nav-cta { padding: 0.6rem 1.6rem; border: 1px solid rgba(253,250,245,0.6); border-radius: 2px; color: var(--warm-white); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; font-family: var(--font-body); }
+.nav-cta:hover { background: var(--clay); border-color: var(--clay); }
+nav.scrolled .nav-cta { border-color: var(--clay); color: var(--clay); }
+nav.scrolled .nav-cta:hover { background: var(--clay); color: var(--warm-white); }
+
+/* HERO */
+#hero { min-height: 100vh; position: relative; display: flex; align-items: center; overflow: hidden; }
+#scene-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.hero-content { position: relative; z-index: 3; padding: 0 4rem; max-width: 900px; }
+.hero-eyebrow { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay-light); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s ease 0.5s forwards; }
+.hero-eyebrow::before { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--clay); }
+.hero-headline { font-family: var(--font-display); font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--warm-white); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards; }
+.hero-headline em { font-style: italic; color: var(--clay-light); }
+.hero-sub { font-size: 1rem; font-weight: 300; color: rgba(245,240,232,0.75); max-width: 480px; line-height: 1.75; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.9s ease 0.9s forwards; }
+.hero-actions { display: flex; gap: 1.5rem; align-items: center; opacity: 0; animation: fadeUp 0.9s ease 1.1s forwards; }
+.btn-primary { padding: 1rem 2.5rem; background: var(--clay); color: var(--warm-white); border: none; font-family: var(--font-body); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; cursor: none; transition: background 0.3s, transform 0.2s; display: inline-block; }
+.btn-primary:hover { background: var(--clay-deep); transform: translateY(-2px); }
+.btn-ghost { color: var(--cream-dark); font-size: 0.78rem; letter-spacing: 0.08em; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s, gap 0.3s; }
+.btn-ghost:hover { color: var(--clay-light); gap: 0.8rem; }
+.btn-ghost::after { content: '→'; }
+.scroll-indicator { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(245,240,232,0.45); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; animation: fadeIn 1s ease 2s both; }
+.scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--clay), transparent); animation: scrollPulse 2s ease infinite; }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* MARQUEE */
+.marquee-strip { background: var(--clay); padding: 1rem 0; overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-flex; animation: marquee 22s linear infinite; }
+.marquee-item { font-family: var(--font-display); font-size: 1rem; font-style: italic; color: var(--warm-white); padding: 0 3rem; opacity: 0.85; }
+.marquee-dot { color: var(--clay-light); font-style: normal; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* SECTIONS */
+section { padding: 7rem 4rem; }
+.section-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+.section-label::before { content: ''; width: 30px; height: 1px; background: var(--clay); display: inline-block; }
+.section-heading { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15; color: var(--earth); margin-bottom: 1.5rem; }
+.section-heading em { font-style: italic; color: var(--clay); }
+.section-body { font-size: 1rem; font-weight: 300; color: var(--earth-mid); line-height: 1.8; margin-bottom: 2rem; }
+
+/* ABOUT */
+#about { background: #F5F0E8; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.stat-row { display: flex; gap: 3rem; margin-top: 2.5rem; }
+.stat-num { font-family: var(--font-display); font-size: 3rem; font-weight: 600; color: var(--clay); line-height: 1; }
+.stat-label { font-size: 0.75rem; color: #8B7355; letter-spacing: 0.05em; margin-top: 0.3rem; }
+.about-image-frame { width: 100%; aspect-ratio: 3/4; background: var(--earth-mid); border-radius: 4px; overflow: hidden; }
+.about-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(245,240,232,0.3); font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; flex-direction: column; gap: 1rem; }
+.about-visual { position: relative; }
+.about-accent { position: absolute; bottom: -1.5rem; left: -1.5rem; width: 120px; height: 120px; background: var(--clay); border-radius: 2px; z-index: -1; opacity: 0.6; }
+.about-tag { position: absolute; top: 2rem; right: -1rem; background: var(--warm-white); padding: 1rem 1.25rem; border-radius: 2px; box-shadow: 0 8px 32px rgba(61,46,30,0.12); font-size: 0.75rem; }
+.about-tag .tag-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--clay); line-height: 1; }
+.about-tag .tag-txt { color: #8B7355; margin-top: 0.2rem; }
+
+/* SERVICES */
+#services { background: var(--earth); color: var(--cream); }
+#services .section-heading { color: var(--cream); }
+#services .section-label { color: var(--clay-light); }
+#services .section-label::before { background: var(--clay-light); }
+.services-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: end; }
+.services-intro .section-body { color: rgba(232,196,168,0.75); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(245,240,232,0.08); border: 1.5px solid rgba(245,240,232,0.08); }
+.service-card { background: var(--earth); padding: 2.5rem; transition: background 0.35s; position: relative; overflow: hidden; cursor: none; }
+.service-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--clay); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+.service-card:hover { background: rgba(245,240,232,0.04); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { width: 44px; height: 44px; margin-bottom: 1.5rem; color: var(--clay); opacity: 0.9; }
+.service-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--cream); margin-bottom: 0.8rem; line-height: 1.2; }
+.service-desc { font-size: 0.85rem; font-weight: 300; color: rgba(232,196,168,0.65); line-height: 1.7; }
+.service-num { position: absolute; top: 1.5rem; right: 1.5rem; font-family: var(--font-display); font-size: 3rem; font-weight: 600; color: rgba(245,240,232,0.04); line-height: 1; pointer-events: none; }
+
+/* PROCESS */
+#process { background: var(--warm-white); }
+.process-timeline { margin-top: 4rem; position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.process-timeline::before { content: ''; position: absolute; top: 28px; left: 5%; right: 5%; height: 1px; background: var(--clay-light); z-index: 0; }
+.process-step { text-align: center; position: relative; z-index: 1; opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.process-step.visible { opacity: 1; transform: translateY(0); }
+.step-dot { width: 56px; height: 56px; border-radius: 50%; background: var(--warm-white); border: 2px solid var(--clay); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--clay); transition: background 0.3s, color 0.3s; }
+.process-step:hover .step-dot { background: var(--clay); color: var(--warm-white); }
+.step-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--earth); margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.82rem; color: #8B7355; line-height: 1.65; }
+
+/* TESTIMONIALS */
+#testimonials { background: #F5F0E8; overflow: hidden; }
+.testimonials-track { display: flex; gap: 2rem; margin-top: 4rem; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.testimonial-card { flex: 0 0 calc(50% - 1rem); background: var(--warm-white); padding: 2.5rem; border-radius: 4px; border: 1px solid rgba(196,131,90,0.15); }
+.quote-mark { font-family: var(--font-display); font-size: 5rem; line-height: 0.6; color: var(--clay-light); margin-bottom: 1rem; display: block; }
+.quote-text { font-family: var(--font-display); font-size: 1.15rem; font-style: italic; font-weight: 300; color: var(--earth); line-height: 1.6; margin-bottom: 1.5rem; }
+.quote-author { font-size: 0.78rem; font-weight: 500; color: var(--clay); letter-spacing: 0.08em; }
+.quote-role { font-size: 0.72rem; color: #8B7355; margin-top: 0.2rem; }
+.testimonial-nav { display: flex; gap: 0.75rem; margin-top: 2.5rem; }
+.t-btn { width: 44px; height: 44px; border: 1px solid var(--clay); background: transparent; border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: none; color: var(--clay); transition: all 0.3s; }
+.t-btn:hover { background: var(--clay); color: var(--warm-white); }
+
+/* CONTACT */
+#contact { background: var(--earth); color: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+#contact .section-heading { color: var(--cream); }
+#contact .section-label { color: var(--clay-light); }
+#contact .section-label::before { background: var(--clay-light); }
+#contact .section-body { color: rgba(232,196,168,0.7); }
+.form-row { margin-bottom: 1.2rem; }
+.form-row label { display: block; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,196,168,0.6); margin-bottom: 0.5rem; }
+.form-row input, .form-row select, .form-row textarea { width: 100%; background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.12); border-radius: 2px; padding: 0.85rem 1rem; color: var(--cream); font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; outline: none; transition: border-color 0.3s; cursor: none; }
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--clay); }
+.form-row select option { background: var(--earth); }
+.form-row textarea { resize: vertical; min-height: 100px; }
+.form-submit { width: 100%; padding: 1rem; background: var(--clay); color: var(--warm-white); border: none; font-family: var(--font-body); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: none; border-radius: 2px; margin-top: 0.5rem; transition: background 0.3s, transform 0.2s; }
+.form-submit:hover { background: var(--clay-deep); transform: translateY(-1px); }
+.contact-item { display: flex; align-items: start; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(245,240,232,0.08); }
+.contact-item-icon { color: var(--clay); margin-top: 2px; flex-shrink: 0; }
+.contact-item-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,196,168,0.5); margin-bottom: 0.25rem; }
+.contact-item-val { font-size: 0.9rem; color: var(--cream-dark); }
+
+/* FOOTER */
+footer { background: #1E150C; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(196,131,90,0.1); }
+.footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: rgba(245,240,232,0.7); }
+.footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.3); letter-spacing: 0.05em; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.72rem; color: rgba(245,240,232,0.4); text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s; }
+.footer-links a:hover { color: var(--clay-light); }
+
+/* REVEAL ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 2rem; }
+  nav.scrolled { padding: 0.8rem 2rem; }
+  .nav-links { display: none; }
+  section { padding: 5rem 2rem; }
+  .hero-content { padding: 0 2rem; }
+  #about, #services .services-intro, #contact { grid-template-columns: 1fr; gap: 3rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-timeline { grid-template-columns: 1fr 1fr; }
+  .testimonial-card { flex: 0 0 85%; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Groundwork</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How it Works</a></li>
+    <li><a href="#testimonials">Stories</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="scene-canvas"></canvas>
+  <div class="hero-content">
+    <p class="hero-eyebrow">HR Consulting &amp; Advisory</p>
+    <h1 class="hero-headline">People are the<br><em>real work.</em><br>We do it well.</h1>
+    <p class="hero-sub">Groundwork Consulting partners with agricultural, remote, and regional employers to build workplaces where people stay, grow, and do their best work.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a Conversation</a>
+      <a href="#services" class="btn-ghost">See our Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Workforce Strategy <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">HR Policy &amp; Compliance <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Performance Frameworks <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Remote Workforce Solutions <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Leadership Development <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Workplace Relations <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Workforce Strategy <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">HR Policy &amp; Compliance <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Performance Frameworks <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Remote Workforce Solutions <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Leadership Development <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Workplace Relations <span class="marquee-dot">·</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <p class="section-label reveal">Our Approach</p>
+    <h2 class="section-heading reveal reveal-delay-1">HR that understands<br><em>where you operate.</em></h2>
+    <p class="section-body reveal reveal-delay-2">Most HR advice is written for city offices with 200 staff and a dedicated people team. We work with employers who don't have that luxury. Whether you run a cattle station, a regional construction firm, or a community health service, we bring practical, grounded HR solutions that actually fit your world.</p>
+    <p class="section-body reveal reveal-delay-2">Founded by an HR professional with deep roots in remote and regional Australia, Groundwork was built because the gap was obvious and the need was real.</p>
+    <div class="stat-row reveal reveal-delay-3">
+      <div><div class="stat-num">12+</div><div class="stat-label">Years experience</div></div>
+      <div><div class="stat-num">80+</div><div class="stat-label">Clients supported</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Regional focus</div></div>
+    </div>
+  </div>
+  <div class="about-visual reveal reveal-delay-1">
+    <div class="about-image-frame">
+      <div class="about-image-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Your Photo Here</span>
+      </div>
+    </div>
+    <div class="about-accent"></div>
+    <div class="about-tag"><div class="tag-num">100%</div><div class="tag-txt">Regional<br>specialists</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div>
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-heading reveal reveal-delay-1">Practical HR,<br>built for the<br><em>real world.</em></h2>
+    </div>
+    <div><p class="section-body reveal reveal-delay-2">No off-the-shelf templates. No advice that doesn't travel past the suburbs. Every engagement is tailored to your industry, your size, and where you actually are.</p></div>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card"><span class="service-num">01</span><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><h3 class="service-title">Policy &amp; Compliance</h3><p class="service-desc">Contracts, handbooks, and HR policies that protect your business and make sense to your team, not just your lawyer.</p></div>
+    <div class="service-card"><span class="service-num">02</span><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><h3 class="service-title">Performance &amp; Culture</h3><p class="service-desc">Build a culture that travels with your team. Performance frameworks, feedback systems, and the hard conversations, done well.</p></div>
+    <div class="service-card"><span class="service-num">03</span><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><h3 class="service-title">Workplace Issues &amp; IR</h3><p class="service-desc">Navigate complaints, disciplinary matters, and industrial relations with confidence, even when you're hours from the nearest HR office.</p></div>
+    <div class="service-card"><span class="service-num">04</span><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><h3 class="service-title">HR Audits &amp; Strategy</h3><p class="service-desc">A clear-eyed look at where your people practices stand today and a roadmap to where they need to be, delivered without jargon.</p></div>
+    <div class="service-card"><span class="service-num">05</span><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><h3 class="service-title">Remote Workforce Solutions</h3><p class="service-desc">Purpose-built HR frameworks for dispersed and remote teams. Onboarding, communication, and people management that works across distance.</p></div>
+    <div class="service-card"><span class="service-num">06</span><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><h3 class="service-title">HR on Retainer</h3><p class="service-desc">Your part-time HR Manager. Regular access to expert advice without the overhead of a full-time hire. Perfect for growing teams.</p></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="text-align: center; max-width: 580px; margin: 0 auto;">
+    <p class="section-label reveal" style="justify-content: center;">How It Works</p>
+    <h2 class="section-heading reveal reveal-delay-1">From first call to <em>lasting change.</em></h2>
+  </div>
+  <div class="process-timeline">
+    <div class="process-step" data-delay="0"><div class="step-dot">1</div><h3 class="step-title">Discovery Call</h3><p class="step-desc">We learn about your operation, your team, and what's keeping you up at night. No forms. Just a conversation.</p></div>
+    <div class="process-step" data-delay="150"><div class="step-dot">2</div><h3 class="step-title">Tailored Proposal</h3><p class="step-desc">A clear scope of work with realistic timelines and honest pricing. You'll know exactly what you're getting.</p></div>
+    <div class="process-step" data-delay="300"><div class="step-dot">3</div><h3 class="step-title">Groundwork Begins</h3><p class="step-desc">We get to work. You stay in the loop without being overwhelmed with meetings and check-ins you don't need.</p></div>
+    <div class="process-step" data-delay="450"><div class="step-dot">4</div><h3 class="step-title">Ongoing Support</h3><p class="step-desc">Delivery is the start, not the end. We stick around to make sure the work actually lands with your people.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label reveal">Client Stories</p>
+  <h2 class="section-heading reveal reveal-delay-1" style="max-width: 520px;">What our clients<br><em>actually say.</em></h2>
+  <div style="overflow: hidden;">
+    <div class="testimonials-track" id="testimonials-track">
+      <div class="testimonial-card"><span class="quote-mark">"</span><p class="quote-text">We'd tried three other consultants before Groundwork. The difference was understanding what it's like to manage a workforce spread across three properties. Practical from day one.</p><p class="quote-author">James Holloway</p><p class="quote-role">Operations Manager, Holloway Pastoral Co.</p></div>
+      <div class="testimonial-card"><span class="quote-mark">"</span><p class="quote-text">I was drowning in employment paperwork and genuinely nervous about getting something wrong. Within a month we had proper contracts, a clear handbook, and I actually felt like I knew what I was doing.</p><p class="quote-author">Sarah Mitchell</p><p class="quote-role">Director, Mitchell Community Services</p></div>
+      <div class="testimonial-card"><span class="quote-mark">"</span><p class="quote-text">Having HR support on retainer means I can pick up the phone when something comes up instead of panicking. Easily the best investment we've made in our team this year.</p><p class="quote-author">Tom Alcott</p><p class="quote-role">CEO, Alcott Civil</p></div>
+      <div class="testimonial-card"><span class="quote-mark">"</span><p class="quote-text">We had a really difficult personnel situation and needed someone who could help us navigate it professionally and with care for everyone involved. Groundwork handled it with exactly that.</p><p class="quote-author">Denise Wren</p><p class="quote-role">Principal, Wren Family Farms</p></div>
+    </div>
+  </div>
+  <div class="testimonial-nav reveal">
+    <button class="t-btn" id="t-prev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="t-btn" id="t-next" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<!-- Netlify Forms: add data-netlify="true" and name="contact" to the form element when deploying -->
+<section id="contact">
+  <div>
+    <p class="section-label reveal">Get in Touch</p>
+    <h2 class="section-heading reveal reveal-delay-1">Let's talk about<br>your <em>people.</em></h2>
+    <p class="section-body reveal reveal-delay-2">No obligation. No hard sell. Just a genuine conversation about where you're at and whether we're the right fit. Most clients know by the end of the first call.</p>
+    <div class="reveal reveal-delay-3">
+      <div class="contact-item"><svg class="contact-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg><div><div class="contact-item-label">Phone</div><div class="contact-item-val">+61 (0) 400 000 000</div></div></div>
+      <div class="contact-item"><svg class="contact-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div><div class="contact-item-label">Email</div><div class="contact-item-val">hello@groundworkconsulting.com.au</div></div></div>
+      <div class="contact-item"><svg class="contact-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><div class="contact-item-label">Response time</div><div class="contact-item-val">Within one business day</div></div></div>
+    </div>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none"><input name="bot-field"></p>
+      <div class="form-row"><label for="name">Your name</label><input type="text" id="name" name="name" placeholder="First and last name" required></div>
+      <div class="form-row"><label for="email">Email address</label><input type="email" id="email" name="email" placeholder="you@yourcompany.com.au" required></div>
+      <div class="form-row"><label for="business">Your business type</label>
+        <select id="business" name="business">
+          <option value="">Select one...</option>
+          <option>Farm or pastoral operation</option>
+          <option>Regional small business</option>
+          <option>Community or health organisation</option>
+          <option>Construction or trade</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-row"><label for="message">What do you need help with?</label><textarea id="message" name="message" placeholder="Tell us what's going on. As much or as little as you like."></textarea></div>
+      <button type="submit" class="form-submit">Send Message</button>
+      <p style="font-size: 0.7rem; color: rgba(232,196,168,0.4); margin-top: 0.75rem; line-height: 1.6;">Your details are safe with us.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Groundwork Consulting</div>
+  <div class="footer-copy">© 2026 Groundwork Consulting. All rights reserved.</div>
+  <div class="footer-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+function animCursor() { rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animCursor); }
+animCursor();
+
+// Sticky nav
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60); });
+
+// Hero canvas scene
+const canvas = document.getElementById('scene-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, t = 0, mouseX = 0.5;
+function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+resize();
+window.addEventListener('resize', resize);
+document.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mouseX = (e.clientX - r.left) / W; });
+
+function drawScene() {
+  ctx.clearRect(0, 0, W, H);
+  t += 0.008;
+  const horizonY = H * 0.62;
+
+  // Sky
+  const sky = ctx.createLinearGradient(0, 0, 0, horizonY);
+  sky.addColorStop(0, '#120a04'); sky.addColorStop(0.4, '#2a1208');
+  sky.addColorStop(0.75, '#6b2d0e'); sky.addColorStop(1, '#c4631a');
+  ctx.fillStyle = sky; ctx.fillRect(0, 0, W, horizonY);
+
+  // Sun glow + disk
+  const sunX = W * 0.72, sunY = horizonY - 2;
+  const glow = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, W * 0.38);
+  glow.addColorStop(0, 'rgba(255,180,60,0.38)'); glow.addColorStop(0.3, 'rgba(200,100,30,0.18)'); glow.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, horizonY + 20);
+  ctx.beginPath(); ctx.arc(sunX, sunY, 28, 0, Math.PI * 2);
+  const sunG = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, 28);
+  sunG.addColorStop(0, 'rgba(255,220,100,0.95)'); sunG.addColorStop(0.6, 'rgba(230,140,40,0.8)'); sunG.addColorStop(1, 'rgba(180,80,10,0)');
+  ctx.fillStyle = sunG; ctx.fill();
+
+  // Stars
+  [[0.08,0.06],[0.18,0.12],[0.25,0.04],[0.35,0.09],[0.44,0.03],[0.12,0.22],[0.55,0.08],[0.62,0.14],[0.30,0.18],[0.82,0.05],[0.88,0.16],[0.92,0.07],[0.48,0.21],[0.70,0.20],[0.15,0.30],[0.96,0.25],[0.40,0.28],[0.78,0.28],[0.05,0.35],[0.60,0.30]].forEach(([sx,sy],i) => {
+    const tw = 0.3 + 0.7 * Math.abs(Math.sin(t * 0.7 + i * 1.3));
+    const sy2 = sy * horizonY;
+    if (sy2 < horizonY - 10) { ctx.beginPath(); ctx.arc(sx*W, sy2, 1.2, 0, Math.PI*2); ctx.fillStyle = `rgba(255,240,200,${tw*0.7})`; ctx.fill(); }
+  });
+
+  // Ground
+  const ground = ctx.createLinearGradient(0, horizonY, 0, H);
+  ground.addColorStop(0, '#3d1a06'); ground.addColorStop(0.3, '#2a1108'); ground.addColorStop(1, '#180b04');
+  ctx.fillStyle = ground; ctx.fillRect(0, horizonY, W, H - horizonY);
+
+  // Dirt track
+  const trackCx = W * (0.48 + (mouseX - 0.5) * 0.04);
+  ctx.beginPath(); ctx.moveTo(trackCx-4,horizonY+1); ctx.lineTo(trackCx+4,horizonY+1); ctx.lineTo(W*0.72,H); ctx.lineTo(W*0.28,H); ctx.closePath();
+  const tg = ctx.createLinearGradient(0,horizonY,0,H); tg.addColorStop(0,'rgba(140,80,30,0.15)'); tg.addColorStop(1,'rgba(140,80,30,0.45)');
+  ctx.fillStyle = tg; ctx.fill();
+
+  // Windmill
+  drawWindmill(ctx, W * 0.82, horizonY, 0.55, t);
+
+  // Fence
+  for (let i = 0; i < 10; i++) {
+    const p = i/9, px = W*(0.04+p*0.38), sy = 0.18+p*0.82;
+    const pH = 38*sy, pW = 2.5*sy, baseY = horizonY+2*sy;
+    ctx.fillStyle = `rgba(50,25,8,${0.5+p*0.4})`; ctx.fillRect(px-pW/2,baseY-pH,pW,pH);
+    if (i < 9) {
+      const np=(i+1)/9, npx=W*(0.04+np*0.38), nsy=0.18+np*0.82, nbY=horizonY+2*nsy, npH=38*nsy;
+      ctx.beginPath(); ctx.moveTo(px,baseY-pH*0.7); ctx.lineTo(npx,nbY-npH*0.7);
+      ctx.strokeStyle=`rgba(50,25,8,${0.4+p*0.4})`; ctx.lineWidth=1.2*sy; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(px,baseY-pH*0.4); ctx.lineTo(npx,nbY-npH*0.4); ctx.stroke();
+    }
+  }
+
+  // Wheat
+  const windShift = (mouseX-0.5)*0.3;
+  for (let i = 0; i < 120; i++) {
+    const xi=i/120, seed=(i*7.3+11.1)%1, x=xi*W+(seed-0.5)*(W/120)*2.5;
+    const depth=seed*0.6+0.05, baseY=horizonY+depth*(H-horizonY)*0.95;
+    const stemH=(40+depth*80)*(0.7+seed*0.6), swayAmt=(10+depth*18)*(0.6+seed*0.8);
+    const phase=xi*Math.PI*4.5+seed*Math.PI*2, sway=Math.sin(t*1.1+phase)*swayAmt+windShift*swayAmt*1.5;
+    const tipX=x+sway, tipY=baseY-stemH, alpha=0.4+depth*0.55;
+    ctx.beginPath(); ctx.moveTo(x,baseY); ctx.quadraticCurveTo(x+sway*0.5,baseY-stemH*0.55,tipX,tipY);
+    ctx.strokeStyle=`rgba(${160+depth*40},${90+depth*30},${20+depth*10},${alpha})`; ctx.lineWidth=1+depth*1.2; ctx.stroke();
+    const hH=8+depth*12, hW=2.5+depth*2;
+    ctx.beginPath(); ctx.ellipse(tipX,tipY-hH*0.4,hW*(0.7+Math.sin(t*1.1+phase)*0.15),hH*0.55,Math.atan2(tipX-x,stemH)*0.3,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${190+depth*30},${110+depth*20},30,${alpha*0.9})`; ctx.fill();
+    for (let g=0;g<3;g++) {
+      const gy=tipY-g*hH*0.28;
+      ctx.beginPath(); ctx.moveTo(tipX,gy); ctx.lineTo(tipX+hW*1.3+sway*0.2,gy-5-depth*3);
+      ctx.strokeStyle=`rgba(${180+depth*30},${100+depth*20},25,${alpha*0.7})`; ctx.lineWidth=0.7; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(tipX,gy); ctx.lineTo(tipX-hW*1.3+sway*0.2,gy-5-depth*3); ctx.stroke();
+    }
+  }
+
+  // Birds
+  [{speed:0.18,y:0.22,size:1.0,off:0},{speed:0.14,y:0.18,size:0.75,off:2.1},{speed:0.22,y:0.26,size:0.85,off:4.8},{speed:0.10,y:0.14,size:0.6,off:1.5},{speed:0.16,y:0.20,size:0.7,off:6.3}].forEach(b => {
+    const bx=((t*b.speed*W*0.3+b.off*W*0.2)%(W*1.4))-W*0.2, by=horizonY*b.y+Math.sin(t*0.9+b.off)*8;
+    const s=b.size, wb=Math.sin(t*3.5+b.off)*5*s;
+    ctx.beginPath(); ctx.moveTo(bx-10*s,by+wb); ctx.quadraticCurveTo(bx-5*s,by-2*s,bx,by); ctx.quadraticCurveTo(bx+5*s,by-2*s,bx+10*s,by+wb);
+    ctx.strokeStyle=`rgba(255,200,120,${0.35+b.size*0.25})`; ctx.lineWidth=1.2*s; ctx.stroke();
+  });
+
+  // Horizon haze
+  const haze = ctx.createLinearGradient(0,horizonY-30,0,horizonY+30);
+  haze.addColorStop(0,'rgba(180,80,20,0)'); haze.addColorStop(0.5,'rgba(180,80,20,0.12)'); haze.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=haze; ctx.fillRect(0,horizonY-30,W,60);
+
+  requestAnimationFrame(drawScene);
+}
+
+function drawWindmill(ctx, x, baseY, scale, t) {
+  const s=scale, towerH=70*s;
+  ctx.save(); ctx.translate(x,baseY);
+  ctx.beginPath(); ctx.moveTo(-6*s,0); ctx.lineTo(-3*s,-towerH); ctx.lineTo(3*s,-towerH); ctx.lineTo(6*s,0);
+  ctx.fillStyle='rgba(25,12,4,0.9)'; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-8*s,0); ctx.lineTo(-6*s,0); ctx.moveTo(6*s,0); ctx.lineTo(8*s,0);
+  ctx.strokeStyle='rgba(25,12,4,0.9)'; ctx.lineWidth=2*s; ctx.stroke();
+  ctx.beginPath(); ctx.arc(0,-towerH,4*s,0,Math.PI*2); ctx.fillStyle='rgba(45,22,7,0.95)'; ctx.fill();
+  for (let i=0;i<4;i++) {
+    const angle=t*0.6+(i*Math.PI/2);
+    ctx.save(); ctx.translate(0,-towerH); ctx.rotate(angle);
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(2*s,-28*s); ctx.lineTo(-2*s,-28*s); ctx.closePath();
+    ctx.fillStyle='rgba(55,28,9,0.85)'; ctx.fill(); ctx.restore();
+  }
+  ctx.restore();
+}
+
+drawScene();
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { const d = e.target.dataset.delay ? parseInt(e.target.dataset.delay) : 0; setTimeout(() => e.target.classList.add('visible'), d); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal, .process-step').forEach(el => observer.observe(el));
+
+// Testimonial slider
+let tIdx = 0;
+const track = document.getElementById('testimonials-track');
+const total = track.querySelectorAll('.testimonial-card').length;
+document.getElementById('t-next').onclick = () => { tIdx = Math.min(tIdx+1,total-2); track.style.transform=`translateX(calc(-${tIdx*52}% - ${tIdx}rem))`; };
+document.getElementById('t-prev').onclick = () => { tIdx = Math.max(0,tIdx-1); track.style.transform=`translateX(calc(-${tIdx*52}% - ${tIdx}rem))`; };
+</script>
+</body>
+</html>
