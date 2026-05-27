@@ -210,46 +210,46 @@ footer { background: #1E150C; padding: 2.5rem 4rem; display: flex; justify-conte
 #healthcheck .section-label { color: var(--clay); }
 #healthcheck .section-heading { color: var(--earth); }
 .quiz-wrap { max-width: 680px; margin: 3rem auto 0; }
-.quiz-progress-bg { height: 3px; background: rgba(196,131,90,0.2); border-radius: 2px; margin-bottom: 2.5rem; }
+.quiz-progress-bg { height: 3px; background: rgba(196,131,90,0.25); border-radius: 2px; margin-bottom: 2.5rem; }
 .quiz-progress-fill { height: 3px; background: var(--clay); border-radius: 2px; transition: width 0.4s ease; }
-.quiz-section-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.6rem; font-weight: 500; }
+.quiz-section-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay-deep); margin-bottom: 0.6rem; font-weight: 500; }
 .quiz-q { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; color: var(--earth); line-height: 1.25; margin-bottom: 0.5rem; }
-.quiz-sub { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.75rem; line-height: 1.65; }
+.quiz-sub { font-size: 0.88rem; color: var(--earth-mid); margin-bottom: 1.75rem; line-height: 1.65; }
 .quiz-options { display: flex; flex-direction: column; gap: 10px; }
-.quiz-opt { display: flex; align-items: flex-start; gap: 14px; padding: 1rem 1.2rem; border: 1px solid rgba(196,131,90,0.2); border-radius: 4px; background: var(--warm-white); cursor: pointer; text-align: left; transition: border-color 0.2s, background 0.2s; width: 100%; }
-.quiz-opt:hover { border-color: var(--clay); }
-.quiz-opt.selected { border-color: var(--clay); background: rgba(196,131,90,0.06); }
+.quiz-opt { display: flex; align-items: flex-start; gap: 14px; padding: 1rem 1.2rem; border: 1px solid rgba(61,46,30,0.2); border-radius: 4px; background: var(--warm-white); cursor: pointer; text-align: left; transition: border-color 0.2s, background 0.2s; width: 100%; }
+.quiz-opt:hover { border-color: var(--clay); background: rgba(196,131,90,0.04); }
+.quiz-opt.selected { border-color: var(--clay); background: rgba(196,131,90,0.08); }
 .quiz-opt.selected .quiz-dot { background: var(--clay); border-color: var(--clay); }
-.quiz-dot { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid rgba(196,131,90,0.35); flex-shrink: 0; margin-top: 2px; transition: all 0.2s; }
-.quiz-opt-text { font-size: 0.9rem; color: var(--text-primary); line-height: 1.5; }
+.quiz-dot { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid rgba(61,46,30,0.3); flex-shrink: 0; margin-top: 2px; transition: all 0.2s; }
+.quiz-opt-text { font-size: 0.9rem; color: var(--earth); line-height: 1.5; font-weight: 400; }
 .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
-.quiz-back { font-size: 0.8rem; color: var(--text-muted); background: none; border: none; cursor: pointer; padding: 0; font-family: var(--font-body); }
-.quiz-back:hover { color: var(--text-primary); }
-.quiz-step { font-size: 0.75rem; color: var(--text-muted); }
+.quiz-back { font-size: 0.8rem; color: var(--earth-mid); background: none; border: none; cursor: pointer; padding: 0; font-family: var(--font-body); }
+.quiz-back:hover { color: var(--earth); }
+.quiz-step { font-size: 0.75rem; color: var(--earth-mid); font-weight: 500; }
 .quiz-next { padding: 0.75rem 2rem; background: var(--clay); color: var(--warm-white); border: none; border-radius: 2px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; font-family: var(--font-body); transition: background 0.2s, opacity 0.2s; }
 .quiz-next:disabled { opacity: 0.3; cursor: not-allowed; }
 .quiz-next:not(:disabled):hover { background: var(--clay-deep); }
 .quiz-results { display: none; }
-.result-score-row { display: flex; align-items: center; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid rgba(196,131,90,0.15); margin-bottom: 2rem; }
+.result-score-row { display: flex; align-items: center; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid rgba(61,46,30,0.2); margin-bottom: 2rem; }
 .result-ring { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; flex-shrink: 0; }
 .result-score-text h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; color: var(--earth); margin-bottom: 0.4rem; }
-.result-score-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
-.result-gaps-heading { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.25rem; font-weight: 500; display: flex; align-items: center; gap: 0.8rem; }
+.result-score-text p { font-size: 0.88rem; color: var(--earth-mid); line-height: 1.65; }
+.result-gaps-heading { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay-deep); margin-bottom: 1.25rem; font-weight: 500; display: flex; align-items: center; gap: 0.8rem; }
 .result-gaps-heading::before { content: ''; width: 30px; height: 1px; background: var(--clay); display: inline-block; }
-.gap-card { border: 1px solid rgba(196,131,90,0.18); border-radius: 4px; padding: 1.25rem 1.5rem; margin-bottom: 12px; background: var(--warm-white); }
+.gap-card { border: 1px solid rgba(61,46,30,0.15); border-radius: 4px; padding: 1.25rem 1.5rem; margin-bottom: 12px; background: var(--warm-white); }
 .gap-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 0.6rem; flex-wrap: wrap; }
 .gap-badge { font-size: 0.65rem; font-weight: 500; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; }
-.badge-high { background: rgba(162,45,45,0.1); color: #A32D2D; }
-.badge-med { background: rgba(133,79,11,0.1); color: #854F0B; }
+.badge-high { background: rgba(162,45,45,0.12); color: #7A1F1F; font-weight: 500; }
+.badge-med { background: rgba(133,79,11,0.12); color: #633806; font-weight: 500; }
 .gap-title-text { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--earth); }
-.gap-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.6rem; }
-.gap-service-tag { font-size: 0.72rem; color: var(--clay); font-weight: 500; letter-spacing: 0.06em; }
+.gap-desc { font-size: 0.85rem; color: var(--earth-mid); line-height: 1.7; margin-bottom: 0.6rem; }
+.gap-service-tag { font-size: 0.72rem; color: var(--clay-deep); font-weight: 500; letter-spacing: 0.06em; }
 .result-cta { background: var(--earth); border-radius: 4px; padding: 2.5rem; text-align: center; margin-top: 2rem; }
 .result-cta h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--warm-white); margin-bottom: 0.6rem; }
-.result-cta p { font-size: 0.88rem; color: rgba(232,196,168,0.75); margin-bottom: 1.5rem; line-height: 1.7; max-width: 440px; margin-left: auto; margin-right: auto; }
+.result-cta p { font-size: 0.88rem; color: rgba(232,196,168,0.9); margin-bottom: 1.5rem; line-height: 1.7; max-width: 440px; margin-left: auto; margin-right: auto; }
 .result-cta-btn { display: inline-block; padding: 0.9rem 2.5rem; background: var(--clay); color: var(--warm-white); border: none; border-radius: 2px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; font-family: var(--font-body); text-decoration: none; transition: background 0.2s; }
 .result-cta-btn:hover { background: var(--clay-deep); }
-.result-restart { font-size: 0.75rem; color: rgba(232,196,168,0.45); background: none; border: none; cursor: pointer; margin-top: 1rem; display: block; width: 100%; font-family: var(--font-body); }
+.result-restart { font-size: 0.75rem; color: rgba(232,196,168,0.65); background: none; border: none; cursor: pointer; margin-top: 1rem; display: block; width: 100%; font-family: var(--font-body); }
 .result-restart:hover { color: rgba(232,196,168,0.75); }
 
 /* FOUNDATIONS SECTION */
@@ -813,7 +813,7 @@ function gcShowResults() {
   if (pct >= 75) { ringStyle = 'background:rgba(59,109,17,0.12);color:#3B6D11'; scoreLabel = 'Strong foundations'; scoreSub = 'Your HR basics are largely in place. There are still areas worth tightening to reduce risk and support your growth.'; }
   else if (pct >= 45) { ringStyle = 'background:rgba(133,79,11,0.12);color:#854F0B'; scoreLabel = 'Some gaps to address'; scoreSub = 'You have some things in place but there are real gaps that leave your business exposed. The good news — these are fixable.'; }
   else { ringStyle = 'background:rgba(162,45,45,0.1);color:#A32D2D'; scoreLabel = 'Significant HR risk'; scoreSub = 'Your business is carrying meaningful HR risk right now. Without the right foundations, a single complaint or claim can become very costly.'; }
-  const gapCards = gaps.length > 0 ? gaps.map(g => `<div class="gap-card"><div class="gap-card-top"><span class="gap-badge badge-${g.priority === 'high' ? 'high' : 'med'}">${g.priority === 'high' ? 'Priority' : 'Worth addressing'}</span><span class="gap-title-text">${g.title}</span></div><div class="gap-desc">${g.desc}</div><div class="gap-service-tag">Groundwork service: ${g.service}</div></div>`).join('') : '<p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;">No major gaps identified — your HR foundations look solid. A periodic audit is still worthwhile to stay ahead of changing legislation.</p>';
+  const gapCards = gaps.length > 0 ? gaps.map(g => `<div class="gap-card"><div class="gap-card-top"><span class="gap-badge badge-${g.priority === 'high' ? 'high' : 'med'}">${g.priority === 'high' ? 'Priority' : 'Worth addressing'}</span><span class="gap-title-text">${g.title}</span></div><div class="gap-desc">${g.desc}</div><div class="gap-service-tag">Groundwork service: ${g.service}</div></div>`).join('') : '<p style="font-size:0.88rem;color:var(--earth-mid);line-height:1.7;">No major gaps identified — your HR foundations look solid. A periodic audit is still worthwhile to stay ahead of changing legislation.</p>';
   gcResults.innerHTML = `
     <div class="result-score-row">
       <div class="result-ring" style="${ringStyle}">${pct}%</div>
